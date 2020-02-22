@@ -19,6 +19,19 @@ config/name="orbital8"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=960
+window/size/height=540
+window/stretch/mode="viewport"
+
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="wall"
+2d_physics/layer_3=" enemies"
+2d_physics/layer_4="ovula"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

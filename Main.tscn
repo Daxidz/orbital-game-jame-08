@@ -1,3 +1,33 @@
-[gd_scene format=2]
+[gd_scene load_steps=6 format=2]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://world/Map.tscn" type="PackedScene" id=2]
+[ext_resource path="res://path.gd" type="Script" id=3]
+[ext_resource path="res://enemies/IST.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 25.8248, 161.894, 0, 0, 0, 0, 25.8248, 165.147, 0, 0, 0, 0, 712.323, 161.894, 0, 0, 0, 0, 1213.37, 223.711, 0, 0, 0, 0, 1447.63, 526.291, 0, 0, 0, 0, 1746.95, 916.717, 0, 0, 0, 0, 2078.81, 1193.27, 0, 0, 0, 0, 2368.38, 1381.97 )
+}
+
+[node name="Main" type="Node2D"]
+
+[node name="Map" parent="." instance=ExtResource( 2 )]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 61.8174, 240.763 )
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource( 1 )
+script = ExtResource( 3 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2( 124.512, 164.68 )
+rotation = -0.00474636
+offset = 100.0
+
+[node name="Camera2D" type="Camera2D" parent="Path2D/PathFollow2D"]
+current = true
+
+[node name="IST" parent="." instance=ExtResource( 4 )]
+position = Vector2( 926.894, 289.348 )
