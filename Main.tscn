@@ -22,12 +22,21 @@ curve = SubResource( 1 )
 script = ExtResource( 3 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2( 124.512, 164.68 )
-rotation = -0.00474636
+position = Vector2( 124.512, 164.679 )
+rotation = -0.00474259
 offset = 100.0
 
 [node name="Camera2D" type="Camera2D" parent="Path2D/PathFollow2D"]
 current = true
 
 [node name="IST" parent="." instance=ExtResource( 4 )]
-position = Vector2( 926.894, 289.348 )
+position = Vector2( 938.894, 193.348 )
+
+[node name="IST2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1780.89, 945.348 )
+
+[node name="IST3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1438.89, 517.348 )
+
+[node name="IST4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2286.89, 1333.35 )

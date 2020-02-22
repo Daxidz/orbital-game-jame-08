@@ -9,8 +9,8 @@ height = 0.36422
 
 [node name="IST" instance=ExtResource( 1 )]
 
-[node name="Sprite" parent="." index="0"]
-texture = ExtResource( 2 )
-
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource( 1 )
+
+[node name="Sprite" parent="." index="2"]
+texture = ExtResource( 2 )
