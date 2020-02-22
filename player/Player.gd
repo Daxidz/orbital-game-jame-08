@@ -4,13 +4,13 @@ signal use
 
 const DIE = false
 
-export var BASE_FRICTION = 0.2
+export var BASE_FRICTION = 0.07
 var STOP_FRICTION = 0.5
 
 export var curent_anim = "idle"
 export var max_speed = 800
 
-export var friction = 0.2
+export var friction = 0.07
 export var friction_delta = 0.0002
 export var acceleration = 0.1
 
@@ -51,6 +51,8 @@ func _ready():
 	dead = false
 	pass
 	 
+
+
 func _physics_process(delta):
 	
 	if dead:
@@ -94,7 +96,14 @@ func _physics_process(delta):
 				if not slowing:
 					slow_down()
 	
-	
+
+func _process(delta):
+	if input_velocity.x != 0:
+		if input_velocity.x < 0:
+			$Sprite.scale.x = -1
+		else:
+			$Sprite.scale.x = 1
+	pass
 
 func slow_down():
 	slowing = true
@@ -104,6 +113,7 @@ func slow_down():
 
 func _on_VisibilityNotifier2D_screen_exited():
 	print(position)
+	
 #	get_tree().quit()
 	pass # Replace with function body.
 
@@ -127,9 +137,9 @@ func set_hp(new_hp):
 	emit_signal("player_hp_change", hp)
 
 func make_invincible():
-	$CollisionPolygon2D.set_deferred("disabled", true);
+	$Hitbox.set_deferred("disabled", true);
 	flicker(2)
-	$CollisionPolygon2D.set_deferred("disabled", false);
+	$Hitbox.set_deferred("disabled", false);
 
 func flicker(time):
 	# Flicker 4 times

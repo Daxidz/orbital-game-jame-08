@@ -1,5 +1,6 @@
 extends Node
 
+const TWO_PLAYERS = true
 
 var Player = preload("res://player/Player.tscn")
 
@@ -13,16 +14,15 @@ func _ready():
 	
 	var p1 = Player.instance()
 	p1.id = 0
-	var p2 = Player.instance()
-	p2.id = 1
-	
 	p1.position = Vector2(64, 64)
-	p2.position = Vector2(64, 128)
-	
 	add_child(p1)
-#	add_child(p2)
 	
-	pass # Replace with function body.
+	if TWO_PLAYERS:
+		var p2 = Player.instance()
+		p2.id = 1
+		p2.position = Vector2(64, 128)
+		add_child(p2)
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
