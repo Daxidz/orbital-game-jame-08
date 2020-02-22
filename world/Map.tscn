@@ -73,7 +73,6 @@ rotate = false
 
 [node name="Camera2D" type="Camera2D" parent="Path2D/PathFollow2D"]
 position = Vector2( -2.15823, 0.0369568 )
-current = true
 
 [node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D/Camera2D"]
 script = ExtResource( 4 )
