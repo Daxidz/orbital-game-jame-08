@@ -1,13 +1,11 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://world/MobSpawner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://world/Map.tscn" type="PackedScene" id=2]
-[ext_resource path="res://ui/boutons/boutons_hover_quit.png" type="Texture" id=3]
+[ext_resource path="res://player/assets/sperm.png" type="Texture" id=3]
 [ext_resource path="res://ui/boutons/start_bouton_hover.png" type="Texture" id=4]
 [ext_resource path="res://Main.gd" type="Script" id=5]
-[ext_resource path="res://ui/boutons/boutons_back.png" type="Texture" id=6]
 [ext_resource path="res://world/assets/background1.png" type="Texture" id=7]
-[ext_resource path="res://player/assets/sperm.png" type="Texture" id=8]
 [ext_resource path="res://ui/boutons/boutons_controls.png" type="Texture" id=9]
 [ext_resource path="res://ui/boutons/boutons_credits.png" type="Texture" id=10]
 [ext_resource path="res://ui/boutons/boutons_quit.png" type="Texture" id=11]
@@ -20,10 +18,9 @@ script = ExtResource( 5 )
 
 [node name="Map" parent="." instance=ExtResource( 2 )]
 
-[node name="InGameMenu" type="CanvasLayer" parent="."]
-pause_mode = 2
+[node name="Menu" type="CanvasLayer" parent="."]
 
-[node name="Quit" type="TextureButton" parent="InGameMenu"]
+[node name="StartButton" type="TextureButton" parent="Menu"]
 visible = false
 margin_right = 40.0
 margin_bottom = 40.0
@@ -31,30 +28,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Restart" type="TextureButton" parent="InGameMenu"]
+[node name="QuitButton" type="TextureButton" parent="Menu"]
 visible = false
 margin_right = 40.0
 margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="BackToMenu" type="TextureButton" parent="InGameMenu"]
-visible = false
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Resume" type="TextureButton" parent="InGameMenu"]
-pause_mode = 2
-visible = false
-margin_left = 289.39
-margin_top = 150.674
-margin_right = 665.39
-margin_bottom = 275.674
-texture_normal = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -69,8 +46,10 @@ __meta__ = {
 }
 
 [node name="BG" type="TextureRect" parent="MainMenu"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = 446.537
+margin_top = 363.435
+margin_right = 510.537
+margin_bottom = 427.435
 texture = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -114,9 +93,6 @@ margin_right = 540.019
 margin_bottom = 310.061
 texture_normal = ExtResource( 9 )
 texture_hover = ExtResource( 14 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="StartButton" type="TextureButton" parent="MainMenu/Buttons"]
 margin_left = 448.627
@@ -146,7 +122,7 @@ size_flags_horizontal = 3
 [node name="TextureRect3" type="TextureRect" parent="PlayersLife/Bar/P0"]
 margin_right = 64.0
 margin_bottom = 74.0
-texture = ExtResource( 8 )
+texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -165,7 +141,7 @@ size_flags_horizontal = 3
 [node name="TextureRect3" type="TextureRect" parent="PlayersLife/Bar/P1"]
 margin_right = 64.0
 margin_bottom = 74.0
-texture = ExtResource( 8 )
+texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -178,21 +154,40 @@ margin_bottom = 74.0
 [node name="MobSpawner" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1238, 452 )
 
-[node name="MobSpawner2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 3498, 922 )
+[node name="Node" type="Node" parent="."]
 
-[node name="MobSpawner3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 2942, 1094 )
+[node name="MobSpawner" parent="Node" instance=ExtResource( 1 )]
+position = Vector2( 568.575, 180.401 )
 
-[node name="MobSpawner4" parent="." instance=ExtResource( 1 )]
-position = Vector2( 2380, 1176 )
+[node name="MobSpawner2" parent="Node" instance=ExtResource( 1 )]
+position = Vector2( 1366.07, 324.723 )
 
-[node name="MobSpawner5" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1988, 1048 )
+[node name="MobSpawner3" parent="Node" instance=ExtResource( 1 )]
+position = Vector2( 1927.19, 180.402 )
+
+[node name="MobSpawner4" parent="Node" instance=ExtResource( 1 )]
+position = Vector2( 2473.37, 339.652 )
+
+[node name="MobSpawner5" parent="Node" instance=ExtResource( 1 )]
+position = Vector2( 3212.39, 347.117 )
+
+[node name="MobSpawner6" parent="Node" instance=ExtResource( 1 )]
+position = Vector2( 3644.11, 156.763 )
+
+[node name="MobSpawner7" parent="Node" instance=ExtResource( 1 )]
+position = Vector2( 3972.56, 360.803 )
+
+[node name="MobSpawner8" parent="Node" instance=ExtResource( 1 )]
+position = Vector2( 4394.33, 205.284 )
+
+[node name="MobSpawner9" parent="Node" instance=ExtResource( 1 )]
+position = Vector2( 4924.34, 358.315 )
+
+[node name="MobSpawner10" parent="Node" instance=ExtResource( 1 )]
+position = Vector2( 5196.81, 134.368 )
 
 [node name="MobSpawner6" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1640, 802 )
-[connection signal="pressed" from="InGameMenu/Resume" to="." method="_on_Resume_pressed"]
 [connection signal="pressed" from="MainMenu/Buttons/QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="pressed" from="MainMenu/Buttons/Credits" to="." method="_on_Credits_pressed"]
 [connection signal="pressed" from="MainMenu/Buttons/Controls" to="." method="_on_Controls_pressed"]

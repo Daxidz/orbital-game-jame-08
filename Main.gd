@@ -6,12 +6,12 @@ var Player = preload("res://player/Player.tscn")
 
 
 func display_inGame_menu():
-	for but in $InGameMenu.get_children():
+	for but in $Menu.get_children():
 		but.disabled = false
 		but.visible = true
 		
 func hide_inGame_menu():
-	for but in $InGameMenu.get_children():
+	for but in $Menu.get_children():
 		but.disabled = true
 		but.visible = false
 		
@@ -40,9 +40,6 @@ func _input(event):
 		get_tree().paused = true
 		
 func prepare_ui(id):
-	
-	
-	
 	for i in range(3):
 		var drop
 	
@@ -88,6 +85,7 @@ func start_game():
 	yield(get_tree().create_timer(2), "timeout")
 	
 	$MainMenu/Context1.hide()
+	display_players_bar()
 	
 	$Map.start()
 
