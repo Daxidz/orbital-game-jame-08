@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://world/assets/wall.png" type="Texture" id=1]
 [ext_resource path="res://world/assets/background.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://environement/spremicide/Spermicide.tscn" type="PackedScene" id=8]
 [ext_resource path="res://environement/glaire/Glaire.tscn" type="PackedScene" id=9]
 [ext_resource path="res://world/MobSpawner.tscn" type="PackedScene" id=10]
+[ext_resource path="res://environement/Ovary.tscn" type="PackedScene" id=11]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
@@ -210,7 +211,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id=12]
-extents = Vector2( 510.507, 291.768 )
+extents = Vector2( 521.811, 291.768 )
 
 [sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 482.173, 270.81 )
@@ -474,4 +475,7 @@ rotation = 3.8886
 [node name="Spermicide11" parent="speedSlow" instance=ExtResource( 8 )]
 position = Vector2( 10687.9, 5129.53 )
 rotation = 2.92212
+
+[node name="Ovary" parent="." instance=ExtResource( 11 )]
+position = Vector2( 9285.85, 5128.39 )
 [connection signal="body_exited" from="Path2D/PathFollow2D/Camera2D/Area2D2" to="." method="_on_Area2D2_body_exited"]

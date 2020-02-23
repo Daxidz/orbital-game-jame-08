@@ -9,11 +9,11 @@ signal hit
 
 const DIE = true
 
-export var BASE_FRICTION = 0.07
+export var BASE_FRICTION = 0.14
 var STOP_FRICTION = 0.5
 
 export var curent_anim = "idle"
-export var max_speed = 800
+export var max_speed = 700
 
 var isSpeedModified = false
 var modifiedSpeed = 0
@@ -22,7 +22,7 @@ export var friction = 0.07
 export var friction_delta = 0.0002
 export var acceleration = 0.1
 
-const BASE_ACCEL = 0.3
+const BASE_ACCEL = 0.2
 const DASH_ACCEL = 0.4
 
 const BASE_SPEED = 800
@@ -57,7 +57,7 @@ var bouncing = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$AnimationPlayer.play("idle")
+	$AnimationPlayer.play("idle_%s" % id)
 	dead = false
 	pass
 

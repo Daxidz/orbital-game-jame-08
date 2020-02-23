@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gameOvaire_screen.png-4a1e908ac663423aec07259edf3238d0.stex"
+path="res://.import/launch_menu.png-d2230496a385deb60ccdf676e718abb9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/gameOvaire_screen.png"
-dest_files=[ "res://.import/gameOvaire_screen.png-4a1e908ac663423aec07259edf3238d0.stex" ]
+source_file="res://ui/launch_menu.png"
+dest_files=[ "res://.import/launch_menu.png-d2230496a385deb60ccdf676e718abb9.stex" ]
 
 [params]
 
