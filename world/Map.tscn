@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://world/assets/wall.png" type="Texture" id=1]
-[ext_resource path="res://world/assets/background1.png" type="Texture" id=2]
+[ext_resource path="res://world/assets/background.png" type="Texture" id=2]
 [ext_resource path="res://world/path.gd" type="Script" id=3]
 [ext_resource path="res://world/assets/Bordures.png" type="Texture" id=4]
 [ext_resource path="res://world/Map.gd" type="Script" id=5]
@@ -197,7 +197,6 @@ tile_data = PoolIntArray( -327574, 1610612737, 0, -327573, 1610612739, 0, -32757
 motion_scale = Vector2( 0.5, 0.5 )
 
 [node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
-visible = false
 margin_left = -55.3857
 margin_top = -413.79
 margin_right = 4831.61

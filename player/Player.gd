@@ -2,7 +2,11 @@ extends KinematicBody2D
 
 signal use
 
-const DIE = false
+signal dead
+
+signal hit
+
+const DIE = true
 
 export var BASE_FRICTION = 0.07
 var STOP_FRICTION = 0.5
@@ -22,7 +26,7 @@ const DASH_SPEED = 1000
 
 const SLOW_SPEED = 400
 
-const BASE_HP = 4
+const BASE_HP = 3
 var hp = BASE_HP 
 var dead
 
@@ -136,6 +140,7 @@ func take_damage(amount):
 	if not taking_dmg:
 		if hp-amount <= 0:
 			die()
+		emit_signal("hit", id)
 		taking_dmg = true
 		set_hp(hp-amount)
 		make_invincible()
@@ -164,4 +169,5 @@ func flicker(time):
 func die():
 	if DIE:
 		dead = true
+		emit_signal("dead", id)
 		queue_free()
