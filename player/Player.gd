@@ -134,7 +134,6 @@ func set_hp(new_hp):
 		return
 	print("HP CHANGING TO ", new_hp)
 	hp = new_hp
-	emit_signal("player_hp_change", hp)
 
 func make_invincible():
 	$Hitbox.set_deferred("disabled", true);
