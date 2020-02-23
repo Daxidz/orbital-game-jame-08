@@ -22,6 +22,7 @@ func _input(event):
 		
 
 func start_game():
+	$MainTheme.play()
 	var p1 = Player.instance()
 	p1.id = 0
 	p1.position = Vector2(200, 200)

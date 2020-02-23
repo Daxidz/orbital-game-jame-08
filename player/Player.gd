@@ -140,6 +140,8 @@ func take_damage(amount):
 		taking_dmg = true
 		set_hp(hp-amount)
 		make_invincible()
+		$HurtSound.play()
+		$HurtSound.stop()
 		
 		
 func set_hp(new_hp):
