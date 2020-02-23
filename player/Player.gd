@@ -39,19 +39,38 @@ var input_velocity = Vector2.ZERO
 
 
 var id
+var game_camera
 
-enum STATES { IDLE, MOVING, DASHING, ATTACKING, TOUCHED } 
-
-var state = "idle"
-
+# ref to the game zone area to clamp the pos
+var game_zone: Area2D
+var path_pos
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#$AnimationPlayer.play("idle")
+	$AnimationPlayer.play("idle")
 	dead = false
 	pass
-	 
 
+
+func clamp_to_zone():
+	
+#	var kek = get_parent().get_node()
+	
+	var viewportInfo = Rect2(path_pos.position, game_zone.get_node("CollisionShape2D").shape.extents)
+	
+	print(viewportInfo)
+	
+	if position.x < viewportInfo.position.x:
+		position.x = viewportInfo.position.x
+	
+	if position.y < viewportInfo.position.y:
+		position.y = viewportInfo.position.y
+	
+	if position.x >= viewportInfo.end.x:
+		position.x = viewportInfo.end.x-1
+	
+	if position.y < viewportInfo.end.y:
+		position.y = viewportInfo.end.y-1
 
 func _physics_process(delta):
 	
@@ -95,7 +114,7 @@ func _physics_process(delta):
 			if get_slide_collision(0).collider.is_in_group("tiles"):
 				if not slowing:
 					slow_down()
-	
+#	clamp_to_zone()
 
 func _process(delta):
 	if input_velocity.x != 0:
@@ -103,7 +122,7 @@ func _process(delta):
 			$Sprite.scale.x = -1
 		else:
 			$Sprite.scale.x = 1
-	pass
+	
 
 func slow_down():
 	slowing = true
