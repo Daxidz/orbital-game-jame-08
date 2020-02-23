@@ -10,6 +10,9 @@ var STOP_FRICTION = 0.5
 export var curent_anim = "idle"
 export var max_speed = 800
 
+var isSpeedModified = false
+var modifiedSpeed = 0
+
 export var friction = 0.07
 export var friction_delta = 0.0002
 export var acceleration = 0.1
@@ -98,8 +101,8 @@ func _physics_process(delta):
 		input_velocity.y += 1
 
 	
-	if slowing:
-		max_speed = SLOW_SPEED
+	if isSpeedModified:
+		max_speed = modifiedSpeed
 		
 	input_velocity = input_velocity.normalized() * max_speed
 	
@@ -125,9 +128,7 @@ func _process(delta):
 	
 
 func slow_down():
-	slowing = true
-	yield(get_tree().create_timer(2), "timeout")
-	slowing = false
+	applySpeed(-400, 2)
 	
 
 func _on_VisibilityNotifier2D_screen_exited():
@@ -172,3 +173,10 @@ func die():
 	if DIE:
 		dead = true
 		queue_free()
+		
+func applySpeed(speed, timer):
+	modifiedSpeed = BASE_SPEED + speed
+
+	isSpeedModified = true
+	yield(get_tree().create_timer(timer), "timeout")
+	isSpeedModified = false
