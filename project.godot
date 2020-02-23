@@ -79,4 +79,5 @@ ui_right_1={
 
 [rendering]
 
+quality/depth/hdr=false
 environment/default_environment="res://default_env.tres"

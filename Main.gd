@@ -33,6 +33,17 @@ func display_MainMenu():
 	for but in $MainMenu/Buttons.get_children():
 		but.disabled = false
 		but.visible = true
+
+func hide_EndMenu():
+	$EndMenu/TextureRect.hide()
+	$EndMenu/TextureButton.visible = false
+	$EndMenu/TextureButton.disabled = true
+
+		
+func display_EndMenu():
+	$EndMenu/TextureRect.show()
+	$EndMenu/TextureButton.visible = true
+	$EndMenu/TextureButton.disabled = false
 		
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
@@ -48,7 +59,10 @@ func prepare_ui(id):
 		drop.texture = load("res://ui/drops_%s.png" % id)
 		get_node("PlayersLife/Bar/P%s/HPs" % id).add_child(drop)
 	pass
-		
+
+func end_game():
+	hide_players_bar()
+	pass	
 
 func start_game():
 	$MainTheme.play()
@@ -64,6 +78,7 @@ func start_game():
 	
 	p1.connect("hit", self, "_on_Player_Hit")
 	p1.connect("dead", self, "_on_Player_Dead")
+	p1.connect("win", self, "_on_Player_Win")
 	
 	
 	if TWO_PLAYERS:
@@ -83,6 +98,8 @@ func start_game():
 		
 	$MainMenu/BG.hide()
 	$MainMenu/Context1.show()
+	nb_dead = 0
+	$Map.init()
 	yield(get_tree().create_timer(2), "timeout")
 	
 	$MainMenu/Context1.hide()
@@ -95,7 +112,7 @@ func _ready():
 	$MainMenu/Context1.hide()
 	hide_inGame_menu()
 	hide_players_bar()
-	$Map.init()
+	hide_EndMenu()
 
 
 func _on_StartButton_pressed():
@@ -132,9 +149,21 @@ func _on_Player_Dead(id):
 		tot_players = 2
 		
 	if nb_dead == tot_players:
-		display_inGame_menu()
+		$EndMenu/TextureRect.texture = load("res://ui/gameOvaire_screen.png")
+		display_EndMenu()
+		
+func _on_Player_Win(id):
+	$EndMenu/TextureRect.texture = load("res://ui/winP%s_screen.png" % id)
+	display_EndMenu()
 	
 func _on_Player_Hit(id):
 #	if get_node("PlayersLife/Bar/P%s/HPs" % id).get_child(0).queue_free()
 	if get_node("PlayersLife/Bar/P%s/HPs" % id).get_child(0):
 		get_node("PlayersLife/Bar/P%s/HPs" % id).get_child(0).queue_free()
+
+
+func _on_TextureButton_pressed():
+	hide_EndMenu()
+	hide_players_bar()
+	display_MainMenu()
+	pass # Replace with function body.

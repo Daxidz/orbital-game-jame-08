@@ -3,6 +3,7 @@ extends KinematicBody2D
 signal use
 
 signal dead
+signal win
 
 signal hit
 
@@ -168,6 +169,9 @@ func flicker(time):
 		$Sprite.self_modulate.a = 1.0
 		yield(get_tree().create_timer(0.25), "timeout")
 		taking_dmg = false
+
+func win():
+	emit_signal("win", id)
 
 func die():
 	if DIE:

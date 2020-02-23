@@ -1,17 +1,20 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
+[ext_resource path="res://ui/boutons/boutons_hover_menu.png" type="Texture" id=1]
 [ext_resource path="res://world/Map.tscn" type="PackedScene" id=2]
 [ext_resource path="res://player/assets/sperm.png" type="Texture" id=3]
 [ext_resource path="res://ui/boutons/start_bouton_hover.png" type="Texture" id=4]
 [ext_resource path="res://Main.gd" type="Script" id=5]
 [ext_resource path="res://sounds/MainTheme.wav" type="AudioStream" id=6]
 [ext_resource path="res://world/assets/background1.png" type="Texture" id=7]
+[ext_resource path="res://ui/boutons/boutons_menu.png" type="Texture" id=8]
 [ext_resource path="res://ui/boutons/boutons_controls.png" type="Texture" id=9]
 [ext_resource path="res://ui/boutons/boutons_credits.png" type="Texture" id=10]
 [ext_resource path="res://ui/boutons/boutons_quit.png" type="Texture" id=11]
 [ext_resource path="res://ui/boutons/boutons_hover_credits.png" type="Texture" id=12]
 [ext_resource path="res://ui/boutons/start_bouton.png" type="Texture" id=13]
 [ext_resource path="res://ui/boutons/boutons_hover_controls.png" type="Texture" id=14]
+[ext_resource path="res://environement/Ovary.tscn" type="PackedScene" id=15]
 
 [node name="Main" type="Node"]
 script = ExtResource( 5 )
@@ -46,10 +49,10 @@ __meta__ = {
 }
 
 [node name="BG" type="TextureRect" parent="MainMenu"]
-margin_left = 446.537
-margin_top = 363.435
-margin_right = 510.537
-margin_bottom = 427.435
+margin_left = -0.363159
+margin_top = 7.34747
+margin_right = 540.637
+margin_bottom = 472.347
 texture = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -151,10 +154,34 @@ margin_left = 68.0
 margin_right = 68.0
 margin_bottom = 74.0
 
+[node name="EndMenu" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="EndMenu"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="EndMenu"]
+margin_left = 453.157
+margin_top = 368.356
+margin_right = 544.157
+margin_bottom = 408.356
+texture_normal = ExtResource( 8 )
+texture_hover = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="MainTheme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 volume_db = -10.602
+
+[node name="Ovary" parent="." instance=ExtResource( 15 )]
+position = Vector2( 477.007, 243.804 )
 [connection signal="pressed" from="MainMenu/Buttons/QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="pressed" from="MainMenu/Buttons/Credits" to="." method="_on_Credits_pressed"]
 [connection signal="pressed" from="MainMenu/Buttons/Controls" to="." method="_on_Controls_pressed"]
 [connection signal="pressed" from="MainMenu/Buttons/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="EndMenu/TextureButton" to="." method="_on_TextureButton_pressed"]
