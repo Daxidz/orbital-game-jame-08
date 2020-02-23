@@ -1,36 +1,158 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://world/MobSpawner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://world/Map.tscn" type="PackedScene" id=2]
-[ext_resource path="res://player/assets/sperm.png" type="Texture" id=3]
-[ext_resource path="res://environement/glaire/Glaire.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/boutons/orbital_jam_start_hover.png" type="Texture" id=3]
+[ext_resource path="res://ui/boutons/orbital_jam_start.png" type="Texture" id=4]
 [ext_resource path="res://Main.gd" type="Script" id=5]
-[ext_resource path="res://environement/spremicide/Spermicide.tscn" type="PackedScene" id=6]
-
-[sub_resource type="StreamTexture" id=1]
-flags = 4
+[ext_resource path="res://ui/boutons/boutons_back.png" type="Texture" id=6]
+[ext_resource path="res://world/assets/background1.png" type="Texture" id=7]
+[ext_resource path="res://player/assets/sperm.png" type="Texture" id=8]
+[ext_resource path="res://ui/drops 1.png" type="Texture" id=9]
 
 [node name="Main" type="Node"]
 script = ExtResource( 5 )
 
 [node name="Map" parent="." instance=ExtResource( 2 )]
 
-[node name="Menu" type="CanvasLayer" parent="."]
+[node name="InGameMenu" type="CanvasLayer" parent="."]
+pause_mode = 2
 
-[node name="StartButton" type="TextureButton" parent="Menu"]
+[node name="Quit" type="TextureButton" parent="InGameMenu"]
 visible = false
-margin_left = 446.537
-margin_top = 363.435
-margin_right = 510.537
-margin_bottom = 427.435
-texture_normal = ExtResource( 3 )
-texture_pressed = SubResource( 1 )
+margin_right = 40.0
+margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="QuitButton" type="TextureButton" parent="Menu"]
+[node name="Restart" type="TextureButton" parent="InGameMenu"]
 visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackToMenu" type="TextureButton" parent="InGameMenu"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Resume" type="TextureButton" parent="InGameMenu"]
+pause_mode = 2
+visible = false
+margin_left = 289.39
+margin_top = 150.674
+margin_right = 665.39
+margin_bottom = 275.674
+texture_normal = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="P1" type="Node" parent="CanvasLayer"]
+
+[node name="HSplitContainer2" type="HSplitContainer" parent="CanvasLayer/P1"]
+margin_left = 6.3025
+margin_top = 4.41174
+margin_right = 120.302
+margin_bottom = 44.4117
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/P1/HSplitContainer2"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 8 )
+
+[node name="HSplitContainer" type="HSplitContainer" parent="CanvasLayer/P1/HSplitContainer2"]
+margin_left = 76.0
+margin_right = 114.0
+margin_bottom = 64.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/P1/HSplitContainer2/HSplitContainer"]
+visible = false
+margin_right = 13.0
+margin_bottom = 64.0
+texture = ExtResource( 9 )
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/P1/HSplitContainer2/HSplitContainer"]
+visible = false
+margin_right = 13.0
+margin_bottom = 64.0
+texture = ExtResource( 9 )
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/P1/HSplitContainer2/HSplitContainer"]
+margin_right = 37.9995
+margin_bottom = 64.0
+texture = ExtResource( 9 )
+
+[node name="MainMenu" type="CanvasLayer" parent="."]
+
+[node name="Context1" type="TextureRect" parent="MainMenu"]
+margin_left = 9.56677
+margin_right = 4014.57
+margin_bottom = 2250.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Context2" type="TextureRect" parent="MainMenu"]
+margin_left = 9.56677
+margin_right = 4014.57
+margin_bottom = 2250.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="TextureRect" parent="MainMenu"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buttons" type="Node" parent="MainMenu"]
+
+[node name="QuitButton" type="TextureButton" parent="MainMenu/Buttons"]
+margin_left = 449.188
+margin_top = 324.078
+margin_right = 540.188
+margin_bottom = 364.078
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartButton" type="TextureButton" parent="MainMenu/Buttons"]
+margin_left = 325.026
+margin_top = 382.133
+margin_right = 701.026
+margin_bottom = 508.133
+texture_normal = ExtResource( 4 )
+texture_hover = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Credits" type="TextureButton" parent="MainMenu/Buttons"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Controls" type="TextureButton" parent="MainMenu/Buttons"]
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
@@ -60,3 +182,9 @@ position = Vector2( 876.468, 171.74 )
 
 [node name="Spermicide" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1440.25, 589.839 )
+
+[connection signal="pressed" from="InGameMenu/Resume" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="MainMenu/Buttons/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="MainMenu/Buttons/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="MainMenu/Buttons/Credits" to="." method="_on_Credits_pressed"]
+[connection signal="pressed" from="MainMenu/Buttons/Controls" to="." method="_on_Controls_pressed"]
