@@ -15,70 +15,6 @@ script = ExtResource( 5 )
 
 [node name="Map" parent="." instance=ExtResource( 2 )]
 
-[node name="MainMenu" type="CanvasLayer" parent="."]
-
-[node name="Buttons" type="Node" parent="MainMenu"]
-
-[node name="QuitButton" type="TextureButton" parent="MainMenu/Buttons"]
-margin_left = 449.188
-margin_top = 324.078
-margin_right = 540.188
-margin_bottom = 364.078
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="StartButton" type="TextureButton" parent="MainMenu/Buttons"]
-visible = false
-margin_left = 325.026
-margin_top = 382.133
-margin_right = 701.026
-margin_bottom = 508.133
-texture_normal = ExtResource( 4 )
-texture_hover = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Credits" type="TextureButton" parent="MainMenu/Buttons"]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Controls" type="TextureButton" parent="MainMenu/Buttons"]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Context1" type="TextureRect" parent="MainMenu"]
-margin_left = 9.56677
-margin_right = 4014.57
-margin_bottom = 2250.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Context2" type="TextureRect" parent="MainMenu"]
-margin_left = 9.56677
-margin_right = 4014.57
-margin_bottom = 2250.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="BG" type="TextureRect" parent="MainMenu"]
-visible = false
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="InGameMenu" type="CanvasLayer" parent="."]
 pause_mode = 2
 
@@ -157,9 +93,71 @@ margin_bottom = 64.0
 texture = ExtResource( 9 )
 
 [node name="TextureRect3" type="TextureRect" parent="CanvasLayer/P1/HSplitContainer2/HSplitContainer"]
-margin_right = 38.0
+margin_right = 37.9995
 margin_bottom = 64.0
 texture = ExtResource( 9 )
+
+[node name="MainMenu" type="CanvasLayer" parent="."]
+
+[node name="Context1" type="TextureRect" parent="MainMenu"]
+margin_left = 9.56677
+margin_right = 4014.57
+margin_bottom = 2250.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Context2" type="TextureRect" parent="MainMenu"]
+margin_left = 9.56677
+margin_right = 4014.57
+margin_bottom = 2250.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="TextureRect" parent="MainMenu"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buttons" type="Node" parent="MainMenu"]
+
+[node name="QuitButton" type="TextureButton" parent="MainMenu/Buttons"]
+margin_left = 449.188
+margin_top = 324.078
+margin_right = 540.188
+margin_bottom = 364.078
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartButton" type="TextureButton" parent="MainMenu/Buttons"]
+margin_left = 325.026
+margin_top = 382.133
+margin_right = 701.026
+margin_bottom = 508.133
+texture_normal = ExtResource( 4 )
+texture_hover = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Credits" type="TextureButton" parent="MainMenu/Buttons"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Controls" type="TextureButton" parent="MainMenu/Buttons"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MobSpawner" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1238, 452 )
@@ -178,8 +176,8 @@ position = Vector2( 1988, 1048 )
 
 [node name="MobSpawner6" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1640, 802 )
+[connection signal="pressed" from="InGameMenu/Resume" to="." method="_on_Resume_pressed"]
 [connection signal="pressed" from="MainMenu/Buttons/QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="pressed" from="MainMenu/Buttons/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="MainMenu/Buttons/Credits" to="." method="_on_Credits_pressed"]
 [connection signal="pressed" from="MainMenu/Buttons/Controls" to="." method="_on_Controls_pressed"]
-[connection signal="pressed" from="InGameMenu/Resume" to="." method="_on_Resume_pressed"]

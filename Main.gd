@@ -45,16 +45,16 @@ func start_game():
 		button.visible = false
 		
 	$MainMenu/BG.hide()
-	$MainMenu/Context.show()
+	$MainMenu/Context1.show()
 	yield(get_tree().create_timer(2), "timeout")
 	
-	$MainMenu/Context.hide()
+	$MainMenu/Context1.hide()
 	
 	$Map.start()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$MainMenu/Context.hide()
+	$MainMenu/Context1.hide()
 	hide_inGame_menu()
 	$Map.init()
 
@@ -66,6 +66,7 @@ func _ready():
 
 
 func _on_StartButton_pressed():
+	print("STARTING GAME")
 	start_game()
 	pass # Replace with function body.
 
