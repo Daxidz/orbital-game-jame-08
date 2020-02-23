@@ -19,7 +19,7 @@
 [ext_resource path="res://ui/boutons/boutons_hover_infos.png" type="Texture" id=17]
 [ext_resource path="res://ui/boutons/boutons_infos.png" type="Texture" id=18]
 [ext_resource path="res://ui/display_life__P1.png" type="Texture" id=19]
-[ext_resource path="res://ui/context_screen (1).png" type="Texture" id=20]
+[ext_resource path="res://ui/context_screen.png" type="Texture" id=20]
 [ext_resource path="res://ui/credits_screen.png" type="Texture" id=21]
 
 [node name="Main" type="Node"]
@@ -151,15 +151,13 @@ __meta__ = {
 }
 
 [node name="P0" type="HBoxContainer" parent="PlayersLife/Bar"]
-anchor_bottom = 1.0
-margin_top = 4.0
 margin_right = 242.0
 margin_bottom = 74.0
 size_flags_horizontal = 3
 
 [node name="TextureRect3" type="TextureRect" parent="PlayersLife/Bar/P0"]
 margin_right = 33.0
-margin_bottom = 144.0
+margin_bottom = 74.0
 texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -168,18 +166,17 @@ __meta__ = {
 [node name="HPs" type="HBoxContainer" parent="PlayersLife/Bar/P0"]
 margin_left = 37.0
 margin_right = 37.0
-margin_bottom = 144.0
+margin_bottom = 74.0
 
 [node name="P1" type="HBoxContainer" parent="PlayersLife/Bar"]
 margin_left = 246.0
-margin_top = 4.0
 margin_right = 488.0
 margin_bottom = 74.0
 size_flags_horizontal = 3
 
 [node name="TextureRect3" type="TextureRect" parent="PlayersLife/Bar/P1"]
 margin_right = 33.0
-margin_bottom = 70.0
+margin_bottom = 74.0
 texture = ExtResource( 19 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -188,7 +185,7 @@ __meta__ = {
 [node name="HPs" type="HBoxContainer" parent="PlayersLife/Bar/P1"]
 margin_left = 37.0
 margin_right = 37.0
-margin_bottom = 70.0
+margin_bottom = 74.0
 
 [node name="EndMenu" type="CanvasLayer" parent="."]
 
