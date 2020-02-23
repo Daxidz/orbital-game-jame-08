@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://enemies/assets/ist2.png" type="Texture" id=1]
+[ext_resource path="res://enemies/Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://enemies/IST/IST2/IST2.gd" type="Script" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 22.3755
+height = 31.5932
+
+[sub_resource type="Animation" id=2]
+resource_name = "idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 2 ]
+}
+
+[node name="IST2" instance=ExtResource( 2 )]
+scale = Vector2( 1, 1.00555 )
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2( -0.200699, -0.200691 )
+rotation = -0.710349
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" parent="." index="1"]
+anims/idle = SubResource( 2 )
+
+[node name="Sprite" parent="." index="2"]
+position = Vector2( -0.200684, 0.401367 )
+texture = ExtResource( 1 )
+vframes = 3
+frame = 1

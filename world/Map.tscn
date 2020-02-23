@@ -194,6 +194,7 @@ tile_data = PoolIntArray( -2424750, 0, 0, -2424749, 0, 0, -2424748, 0, 0, -24247
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
 motion_scale = Vector2( 0.5, 0.5 )
 
 [node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]

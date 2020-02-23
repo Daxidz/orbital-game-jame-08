@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://enemies/assets/sterilet.png" type="Texture" id=1]
+[ext_resource path="res://enemies/Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://enemies/Contraceptifs/Sterilet/Sterilet.gd" type="Script" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 33.6478
+height = 0.414261
+
+[node name="Sterilet" instance=ExtResource( 2 )]
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2( 0, -0.200699 )
+scale = Vector2( 1.00877, 0.98236 )
+shape = SubResource( 1 )
+
+[node name="Sprite" parent="." index="2"]
+texture = ExtResource( 1 )

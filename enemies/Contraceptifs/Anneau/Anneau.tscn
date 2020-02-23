@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://enemies/assets/anneau.png" type="Texture" id=1]
+[ext_resource path="res://enemies/Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://enemies/Contraceptifs/Anneau/Anneau.gd" type="Script" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 18.8141
+height = 31.8462
+
+[node name="Anneau" instance=ExtResource( 2 )]
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource( 1 )
+
+[node name="Sprite" parent="." index="2"]
+scale = Vector2( 1.01836, 1.02509 )
+texture = ExtResource( 1 )
