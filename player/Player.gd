@@ -45,6 +45,8 @@ var game_camera
 var game_zone: Area2D
 var path_pos
 
+var bouncing = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimationPlayer.play("idle")
@@ -55,22 +57,13 @@ func _ready():
 func clamp_to_zone():
 	
 #	var kek = get_parent().get_node()
+
+	var area_size = game_zone.get_node("CollisionShape2D").shape.extents
 	
-	var viewportInfo = Rect2(path_pos.position, game_zone.get_node("CollisionShape2D").shape.extents)
 	
-	print(viewportInfo)
-	
-	if position.x < viewportInfo.position.x:
-		position.x = viewportInfo.position.x
-	
-	if position.y < viewportInfo.position.y:
-		position.y = viewportInfo.position.y
-	
-	if position.x >= viewportInfo.end.x:
-		position.x = viewportInfo.end.x-1
-	
-	if position.y < viewportInfo.end.y:
-		position.y = viewportInfo.end.y-1
+	position.x = clamp(position.x, path_pos.position.x - area_size.x , path_pos.position.x + area_size.x)
+	position.y = clamp(position.y, path_pos.position.y - area_size.y, path_pos.position.y + area_size.y)
+
 
 func _physics_process(delta):
 	
@@ -83,20 +76,14 @@ func _physics_process(delta):
 
 	input_velocity = Vector2.ZERO
 	
-#		input_velocity.x = Input.get_action_strength("ui_right_%s" % id) - Input.get_action_strength("ui_left_%s" % id)
-#		input_velocity.y = Input.get_action_strength("ui_down_%s" % id) - Input.get_action_strength("ui_up_%s" % id)
-	
 	if Input.is_action_pressed("ui_left_%s" % id):
 		input_velocity.x -= 1
 	if Input.is_action_pressed("ui_right_%s" % id):
-
 		input_velocity.x += 1
 	if Input.is_action_pressed("ui_up_%s" % id):
-
 		input_velocity.y -= 1
 	if Input.is_action_pressed("ui_down_%s" % id):
 		input_velocity.y += 1
-
 	
 	if slowing:
 		max_speed = SLOW_SPEED
@@ -109,12 +96,23 @@ func _physics_process(delta):
 		if velocity.length() != 0:
 			velocity = velocity.linear_interpolate(Vector2.ZERO, friction)
 	
-	velocity = move_and_slide(velocity)
+	if !bouncing:
+		velocity = move_and_slide(velocity)
+		
 	if get_slide_count() != 0:
 			if get_slide_collision(0).collider.is_in_group("tiles"):
 				if not slowing:
 					slow_down()
-#	clamp_to_zone()
+#			elif get_slide_collision(0).collider.is_in_group("player"):
+#				print("COLLIDE PLAYERS")
+#				bouncing = true
+#				velocity = velocity.bounce(get_slide_collision(0).normal)
+#				yield(get_tree().create_timer(2), "timeout")
+#				bouncing = false
+				
+					
+	
+	clamp_to_zone()
 
 func _process(delta):
 	if input_velocity.x != 0:
@@ -130,11 +128,6 @@ func slow_down():
 	slowing = false
 	
 
-func _on_VisibilityNotifier2D_screen_exited():
-	print(position)
-	
-#	get_tree().quit()
-	pass # Replace with function body.
 
 var taking_dmg = false
 

@@ -176,7 +176,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id=11]
-extents = Vector2( 489.171, 278.975 )
+extents = Vector2( 510.507, 291.768 )
 
 [sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 482.173, 270.81 )
@@ -194,7 +194,6 @@ tile_data = PoolIntArray( -262039, 1610612737, 0, -262038, 1610612739, 0, -26203
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-visible = false
 motion_scale = Vector2( 0.5, 0.5 )
 
 [node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
@@ -222,9 +221,9 @@ rotate = false
 current = true
 
 [node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D/Camera2D"]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Camera2D/Area2D"]
+position = Vector2( -1.16638, 2.33271 )
 shape = SubResource( 11 )
 
 [node name="Area2D2" type="Area2D" parent="Path2D/PathFollow2D/Camera2D"]
